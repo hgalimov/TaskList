@@ -2,6 +2,10 @@ package ru.uennar.birem;
 
 public class TaskEntity {
     private Long id;
+    public String name;
+    {
+        name = "dfgk";
+    }
 
     public Long getId() {
         return id;

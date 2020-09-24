@@ -7,3 +7,5 @@
 *.war
 *.jar
 *.ear
+
+Test.java
