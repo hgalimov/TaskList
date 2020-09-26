@@ -1,15 +1,13 @@
-package ru.uennar.birem;
+package ru.uennar.birem.beans;
 
-public class TaskEntity {
+public abstract class TaskEntity {
     private Long id;
     public String name;
     {
-        name = "dfgk";
+        name = "TestTask";
     }
 
-    public Long getId() {
-        return id;
-    }
+    public abstract Long getId();
 
     public void setId(Long id) {
         this.id = id;

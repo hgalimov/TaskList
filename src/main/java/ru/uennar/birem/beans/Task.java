@@ -1,10 +1,11 @@
-package ru.uennar.birem;
+package ru.uennar.birem.beans;
 
-public class Task extends TaskEntity{
+public class Task extends TaskEntity {
+
     private String name;
 
     public Long getId(){
-        return 234l;
+        return 234L;
     }
 
     public String getName() {
@@ -18,9 +19,8 @@ public class Task extends TaskEntity{
     @Override
     public String toString() {
         return "Task{" +
-                "id1=" + super.getId() +
                 "id2=" + this.getId() +
-                "name='" + name + '\'' + super.name +
+                "name='" + name + '\'' + super.name + "" +
                 '}';
     }
 }
