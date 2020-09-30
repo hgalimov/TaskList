@@ -6,9 +6,23 @@
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="task" class="ru.uennar.birem.beans.Task"/>
+    <bean id="person" class="ru.uennar.birem.beans.Person">
+        <constructor-arg value="1"/>
+        <constructor-arg value="Name"/>
+    </bean>
 
-    <bean id="eventLogger" class="ru.uennar.birem.logger.ConsoleEventLogger" />
+    <bean id="eventLogger" class="ru.uennar.birem.logger.ConsoleEventLogger"/>
 
     <bean id="app" class="ru.uennar.birem.App"/>
+
+    <bean id="event" class="ru.uennar.birem.beans.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg ref="dateFormat"/>
+    </bean>
+
+    <bean id="dateFormat" class="java.text.DateFormat"
+          factory-method="getDateTimeInstance"/>
 
 </beans>
