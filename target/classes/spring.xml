@@ -25,4 +25,14 @@
     <bean id="dateFormat" class="java.text.DateFormat"
           factory-method="getDateTimeInstance"/>
 
+    <bean id="fileEventLogger" class="ru.uennar.birem.logger.FileEventLogger"
+          init-method="init">
+        <constructor-arg value="testFileName"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="ru.uennar.birem.logger.CacheFileEventLogger"
+          destroy-method="destroy">
+
+    </bean>
+
 </beans>
