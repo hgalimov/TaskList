@@ -21,6 +21,10 @@ public class FileEventLogger {
     }
 
     public void writeEventsFromCache() {
-        //FileUtils.writeStringToFile;
+        try {
+            FileUtils.write(file, "test", "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,14 +4,13 @@
        xsi:schemaLocation="
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="loggers.xml"/>
 
     <bean id="task" class="ru.uennar.birem.beans.Task"/>
     <bean id="person" class="ru.uennar.birem.beans.Person">
         <constructor-arg value="1"/>
         <constructor-arg value="Name"/>
     </bean>
-
-    <bean id="eventLogger" class="ru.uennar.birem.logger.ConsoleEventLogger"/>
 
     <bean id="app" class="ru.uennar.birem.App"/>
 
@@ -25,14 +24,6 @@
     <bean id="dateFormat" class="java.text.DateFormat"
           factory-method="getDateTimeInstance"/>
 
-    <bean id="fileEventLogger" class="ru.uennar.birem.logger.FileEventLogger"
-          init-method="init">
-        <constructor-arg value="testFileName"/>
-    </bean>
 
-    <bean id="cacheFileEventLogger" class="ru.uennar.birem.logger.CacheFileEventLogger"
-          destroy-method="destroy">
-
-    </bean>
 
 </beans>

@@ -5,8 +5,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.uennar.birem.beans.Event;
 import ru.uennar.birem.beans.Person;
 import ru.uennar.birem.beans.Task;
+import ru.uennar.birem.logger.CacheFileEventLogger;
 import ru.uennar.birem.logger.ConsoleEventLogger;
 import ru.uennar.birem.logger.EventLogger;
+import ru.uennar.birem.logger.FileEventLogger;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -24,8 +26,10 @@ public class App {
 
         Person person = (Person) ctx.getBean("person");
         Event event = (Event) ctx.getBean("event");
+
         if (person != null) {
             logEvent(event);
+            logEventFile(event);
         }
     }
 
@@ -38,6 +42,11 @@ public class App {
 
     public static void logEvent(Event event) {
         EventLogger logger = new ConsoleEventLogger();
+        event.setMsg("Person exist");
+        logger.logEvent(event);
+    }
+    public static void logEventFile(Event event) {
+        CacheFileEventLogger logger = new CacheFileEventLogger();
         event.setMsg("Person exist");
         logger.logEvent(event);
     }

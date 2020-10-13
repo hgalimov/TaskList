@@ -2,6 +2,7 @@ package ru.uennar.birem.logger;
 
 import ru.uennar.birem.beans.Event;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CacheFileEventLogger extends FileEventLogger {
@@ -11,9 +12,10 @@ public class CacheFileEventLogger extends FileEventLogger {
     public CacheFileEventLogger(){
 
     }
-    public CacheFileEventLogger(int cacheSize, List<Event> cache) {
+    public CacheFileEventLogger(String filename, int cacheSize) {
+        super(filename);
         this.cacheSize = cacheSize;
-        this.cache = cache;
+        this.cache = new ArrayList<Event>(cacheSize);
     }
 
     public void logEvent(Event event) {
