@@ -9,6 +9,8 @@ public class FileEventLogger {
     private File file;
     private String fileName;
 
+    private String text;
+
     public FileEventLogger() {
     }
 
@@ -19,10 +21,12 @@ public class FileEventLogger {
     public void init() throws IOException {
         this.file = new File(fileName);
     }
-
+    public void setText(String text) {
+        this.text = text;
+    }
     public void writeEventsFromCache() {
         try {
-            FileUtils.write(file, "test", "UTF-8");
+            FileUtils.write(file, text, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }

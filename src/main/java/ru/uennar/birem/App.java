@@ -1,6 +1,7 @@
 package ru.uennar.birem;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.uennar.birem.beans.Event;
 import ru.uennar.birem.beans.Person;
@@ -17,7 +18,8 @@ public class App {
     public static void main(String[] args) {
         /*Task task = new Task();
         task.setId(1L);*/
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        //ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         Task task = (Task) ctx.getBean("task");
         System.out.println(task.toString());
 
@@ -27,10 +29,13 @@ public class App {
         Person person = (Person) ctx.getBean("person");
         Event event = (Event) ctx.getBean("event");
 
+        CacheFileEventLogger logger = (CacheFileEventLogger) ctx.getBean("cacheFileEventLogger");
+
         if (person != null) {
             logEvent(event);
-            logEventFile(event);
+            logEventFile(event, logger);
         }
+        ctx.close();
     }
 
     public static void logEvent(String msg, DateFormat df) {
@@ -45,8 +50,7 @@ public class App {
         event.setMsg("Person exist");
         logger.logEvent(event);
     }
-    public static void logEventFile(Event event) {
-        CacheFileEventLogger logger = new CacheFileEventLogger();
+    public static void logEventFile(Event event, CacheFileEventLogger logger) {
         event.setMsg("Person exist");
         logger.logEvent(event);
     }

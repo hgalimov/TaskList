@@ -6,6 +6,7 @@
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="fileEventLogger" class="ru.uennar.birem.logger.FileEventLogger"
           init-method="init">
+        <property name="text" value="Test информация"/>
         <constructor-arg value="testFileName.txt"/>
     </bean>
 
