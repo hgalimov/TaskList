@@ -10,6 +10,7 @@
     <bean id="person" class="ru.uennar.birem.beans.Person">
         <constructor-arg value="1"/>
         <constructor-arg value="Name"/>
+        <property name="city" value="Kzn"/>
     </bean>
 
     <bean id="app" class="ru.uennar.birem.App"/>

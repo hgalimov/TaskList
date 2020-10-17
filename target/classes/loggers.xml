@@ -6,13 +6,26 @@
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="fileEventLogger" class="ru.uennar.birem.logger.FileEventLogger"
           init-method="init">
-        <property name="text" value="Test информация"/>
+        <!--<property name="text" value="Test информация"/>-->
         <constructor-arg value="testFileName.txt"/>
+    </bean>
+
+    <bean id="consoleEventLogger" class="ru.uennar.birem.logger.ConsoleEventLogger">
+
     </bean>
 
     <bean id="cacheFileEventLogger" class="ru.uennar.birem.logger.CacheFileEventLogger"
           destroy-method="destroy" parent="fileEventLogger">
-        <constructor-arg index="1" value="10"/>
+        <constructor-arg index="1" value="1"/>
+    </bean>
+
+    <bean id="combinedEventLogger" class="ru.uennar.birem.logger.CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="cacheFileEventLogger"/>
+                <ref bean="consoleEventLogger"/>
+            </list>
+        </constructor-arg>
     </bean>
 
     <bean id="eventLogger" class="ru.uennar.birem.logger.ConsoleEventLogger"/>

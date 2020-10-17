@@ -3,6 +3,7 @@ package ru.uennar.birem.beans;
 public class Person {
     private long id;
     private String name;
+    private String city;
 
     public Person(long id, String name) {
         this.id = id;
@@ -25,11 +26,16 @@ public class Person {
         this.name = name;
     }
 
+    public void setCity(String city){
+        this.city = city;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + name +
+                ", city='" + city +'\'' +
                 '}';
     }
 }

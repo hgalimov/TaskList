@@ -1,11 +1,12 @@
 package ru.uennar.birem.logger;
 
 import org.apache.commons.io.FileUtils;
+import ru.uennar.birem.beans.Event;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FileEventLogger {
+public class FileEventLogger implements EventLogger{
     private File file;
     private String fileName;
 
@@ -24,11 +25,17 @@ public class FileEventLogger {
     public void setText(String text) {
         this.text = text;
     }
-    public void writeEventsFromCache() {
+
+    public void writeEventsFromCache(String text) {
         try {
             FileUtils.write(file, text, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void logEvent(Event event) {
+        writeEventsFromCache(event.getMsg());
     }
 }
