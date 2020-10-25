@@ -1,4 +1,5 @@
 .idea/*
+target
 
 *.iml
 
@@ -8,5 +9,6 @@
 *.jar
 *.ear
 *.txt
+*.properties
 
 Test.java

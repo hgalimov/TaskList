@@ -3,10 +3,7 @@ package ru.uennar.birem;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.uennar.birem.beans.Event;
-import ru.uennar.birem.beans.EventType;
-import ru.uennar.birem.beans.Person;
-import ru.uennar.birem.beans.Task;
+import ru.uennar.birem.beans.*;
 import ru.uennar.birem.logger.*;
 
 import java.text.DateFormat;
@@ -31,11 +28,17 @@ public class App {
         event.setMsg(person.toString());
 
 
+
+
         CombinedEventLogger logger = (CombinedEventLogger) ctx.getBean("combinedEventLogger");
 
         if (person != null) {
             logger.logEvent(event);
         }
+
+        Map<String, String> cityMap = ((City) ctx.getBean("city")).getCity();
+        System.out.println(cityMap);
+
         ctx.close();
     }
 
