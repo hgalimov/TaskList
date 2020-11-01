@@ -1,7 +1,9 @@
 package ru.uennar.birem;
 
+import org.aspectj.lang.JoinPoint;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ru.uennar.birem.aspect.LoggingAspect;
 import ru.uennar.birem.beans.*;
 import ru.uennar.birem.logger.CombinedEventLogger;
 
@@ -20,6 +22,8 @@ public class App3 {
              ) {
             System.out.println(i);
         }
+        LoggingAspect loggingAspect = ctx.getBean("loggingAspect", LoggingAspect.class);
+        loggingAspect.logBefore();
         ctx.close();
     }
 }
