@@ -8,6 +8,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
     <aop:aspectj-autoproxy />
+    <import resource="db.xml"/>
     <bean name="entity" class="ru.uennar.birem.beans.Entity">
         <property name="num" value="#{234}"/>
         <property name="user" value="#{systemEnvironment['USERNAME']}"/>
@@ -15,6 +16,11 @@
         <property name="nums" value="#{{1,2,3,4}}"/>
     </bean>
     <bean id="loggingAspect" class="ru.uennar.birem.aspect.LoggingAspect">
+    </bean>
+
+    <bean id="record" class="ru.uennar.birem.beans.Record" scope="prototype">
+        <constructor-arg value="#{new java.util.Date()}"/>
+        <constructor-arg value="#{T(java.text.DateFormat).getDateTimeInstance()}" />
     </bean>
 
 </beans>
